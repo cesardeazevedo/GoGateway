@@ -11,6 +11,7 @@ var config = {
             name: 'GoGateway'
         },
         port: 3000,
+        url: 'http://localhost:3000/',
         db: 'postgres://localhost/gogateway_development'
     },
 
@@ -29,6 +30,7 @@ var config = {
             name: 'GoGateway'
         },
         port: 3000,
+        url: process.env.URL,
         db: process.env.DATABASE_URL
     }
 };
