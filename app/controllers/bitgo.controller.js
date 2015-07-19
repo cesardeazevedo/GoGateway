@@ -71,7 +71,7 @@ module.exports = {
     }
 
     , addWebhook: function(req){
-        var url = config.url+'/tx/callback/'+req.data.id;
+        var url = config.url+'tx/callback/'+req.data.id;
         wallet.addWebhook({ url: url, type: 'transaction' });
         req.io.route('webhook:list');
     }
