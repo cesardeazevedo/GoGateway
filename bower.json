@@ -1,5 +1,5 @@
 {
-  "name": "pay",
+  "name": "GoGateway",
   "version": "0.0.1",
   "ignore": [
     "**/.*",
@@ -17,5 +17,8 @@
     "jquery": "~2.1.4",
     "angular-moment": "~0.10.1",
     "moment": "~2.10.3"
+  },
+  "resolutions": {
+    "angular": "~1.4.3"
   }
 }
