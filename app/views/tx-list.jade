@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+
+  section.list.animated.fadeInDown(ng-controller='ListTXController')
+    h3
+      a(href='/tx/create') Create Transaction
+    h1 TX
+    table
+      thead
+        tr
+          th Email
+          th Address
+          th Amount
+          th Status
+          th Date
+          th
+      tbody
+        tr(ng-repeat="tx in transactions")
+          td {{ tx.email }}
+          td.break {{ tx.address }}
+          td {{ tx.amount }}
+          td {{ tx.tx_status.name }}
+          td(am-time-ago='tx.createdAt')
+          td
+            | <button class="button button--sacnite button--round-s button--inverted"><i class="button__icon icon icon-user mdi mdi-link-variant"></i><span>User</span></button>

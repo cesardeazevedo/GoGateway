@@ -1,0 +1,13 @@
+fixtures:
+    - model: tx_status
+      data:
+          name: pending
+    - model: tx_status
+      data:
+          name: underpaid
+    - model: tx_status
+      data:
+          name: overpaid
+    - model: tx_status
+      data:
+          name: complete

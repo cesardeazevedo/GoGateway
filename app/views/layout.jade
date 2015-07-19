@@ -1,0 +1,27 @@
+doctype html
+html(lang='en' ng-app='pay')
+  head
+    meta(charset='UTF-8')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title Payment
+    link(rel='stylesheet' href='/css/style.css')
+    link(rel='stylesheet' href='/components/mdi/css/materialdesignicons.min.css' media='all')
+    link(rel='stylesheet' href='/components/ng-input/dist/css/ng-input.min.css')
+    link(rel='stylesheet' href='/css/animate.css')
+    script(src='/components/jquery/dist/jquery.min.js')
+    script(src='/components/angular/angular.min.js')
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js")
+    script(src='/components/sweetalert/dist/sweetalert.min.js')
+    script(src='/components/angular-sweetalert/SweetAlert.min.js')
+    script(src='/components/ng-input/dist/ng-input.min.js')
+    script(src='/components/qrcode/lib/qrcode.min.js')
+    script(src='/components/angular-qr/angular-qr.min.js')
+    script(src='/components/moment/min/moment.min.js')
+    script(src='/components/angular-moment/angular-moment.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/components/jquery.stickyheader.js')
+    script(src='/dest/app-build.js')
+
+  body
+    block content

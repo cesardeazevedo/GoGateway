@@ -1,0 +1,21 @@
+{
+  "name": "pay",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "ng-input": "~0.0.5",
+    "mdi": "~1.1.70",
+    "angular-sweetalert": "~1.1.0",
+    "sweetalert": "~1.0.1",
+    "qrcode": "~1.0.2",
+    "angular-qr": "~0.2.0",
+    "jquery": "~2.1.4",
+    "angular-moment": "~0.10.1",
+    "moment": "~2.10.3"
+  }
+}

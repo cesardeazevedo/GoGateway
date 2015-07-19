@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  base(href='/')
+  section.gateway(ng-controller='InvoiceController')
+    .wrapper.animated.fadeInDown
+      h3
+        a(href='/tx/list') Transactions
+      .info
+        h3
+          | Last Price:
+          i.mdi.mdi-currency-usd
+          | {{ last }}
+      .wrapper--header
+        h1 Payment
+      .wrapper--body.bg-3
+        form(name='form' ng-submit='form.$valid && pay()')
+          ng-input(theme='kohana' ng-required='true' name='amount' ng-model='amount' type='number' min='0' label='Amount' icon='icon icon--kohana mdi mdi-currency-usd')
+          ng-input(theme='kohana' ng-required='true' name='email' ng-model='email' type='email'  label='Email' icon='icon icon--kohana mdi mdi-email')
+          | <button class="button button--itzel button--size-m button--border-thin button--text-thin"><i class="button__icon icon icon-cart mdi mdi-cart"></i><span>Express Checkout</span></button>
+
+
