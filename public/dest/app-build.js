@@ -3,6 +3,7 @@ angular.module('pay',
     ,'oitozero.ngSweetAlert'
     ,'ja.qr'
     ,'angularMoment'
+    ,'720kb.tooltips'
     ,'pay.tx'
     ,'pay.share.services.socket'
     ]);
@@ -248,16 +249,20 @@ function InvoiceController($scope, $compile, $timeout, $window, SweetAlert, Sock
             var tx = {
                 email: $scope.email
               , address: $scope.address
-              , amount: $scope.amount
+              , amount: $scope.amount / $scope.last
             };
             Socket.emit('tx:create', tx);
         });
 
         Socket.on('callback', function(data){
-            fadeIn();
-            $timeout(function(){
-                $window.location.href = '/tx/list';
-            }, 500);
+            console.log(data);
+            if(data.address === $scope.address){
+                fadeIn();
+                swal.close();
+                $timeout(function(){
+                    $window.location.href = '/tx/list';
+                }, 500);
+            }
         });
     };
 
@@ -276,10 +281,46 @@ function InvoiceController($scope, $compile, $timeout, $window, SweetAlert, Sock
 angular.module('pay.tx.controllers')
 .controller('ListTXController', ListTXController);
 
-function ListTXController($scope, Socket){
-    Socket.emit('tx:list');
-    Socket.on('tx:list:response', function(data){
-        console.log(data);
-        $scope.transactions = data;
+ListTXController.$inject = ['$scope', '$compile', '$timeout', '$window', 'Socket', 'SweetAlert'];
+function ListTXController($scope, $compile, $timeout, $window, Socket, SweetAlert){
+
+
+    Socket.emit('market');
+    Socket.on('market:response', function(data){
+        $scope.last = data.latest.currencies.USD.last;
+        Socket.emit('tx:list');
+        Socket.on('tx:list:response', function(data){
+            console.log(data);
+            $scope.transactions = data;
+        });
     });
+
+    $scope.pay = function(address) {
+
+        var qrcode  = angular.element("<qr text='address' type-number='10' size='200' image='false'></qr>");
+
+        $scope.address = address;
+
+        SweetAlert.swal({
+            title: "Pay with bitcoin"
+          , text: "Waiting Payment...<hr><br><div id='qr'></div><span id='address'></span>"
+          , html: true
+          , animation: "slide-from-top"
+          , imageUrl: '/img/bitcoin.png'
+          , showCancelButton: true
+          , showConfirmButton: false
+        });
+
+        setTimeout(function(){
+            //Append qr manually to sweet alert
+            angular.element(document.querySelector('#qr')).append($compile(qrcode)($scope));
+            //Display addres to sweet alert
+            angular.element(document.querySelector('#address')).text($scope.address);
+        });
+
+        Socket.on('callback', function(data){
+            if(data.address === $scope.address)
+                swal.close();
+        });
+    };
 }

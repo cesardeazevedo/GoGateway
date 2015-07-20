@@ -9,14 +9,14 @@ block content
       .info
         h3
           | Last Price:
-          i.mdi.mdi-currency-usd
-          | {{ last }}
+          | {{ last | currency }}
       .wrapper--header
-        h1 Payment
+        h1 Invoice
       .wrapper--body.bg-3
         form(name='form' ng-submit='form.$valid && pay()')
           ng-input(theme='kohana' ng-required='true' name='amount' ng-model='amount' type='number' min='0' label='Amount' icon='icon icon--kohana mdi mdi-currency-usd')
+          p Value in BTC: {{ amount / last | currency: "Ƀ ":6 }}
           ng-input(theme='kohana' ng-required='true' name='email' ng-model='email' type='email'  label='Email' icon='icon icon--kohana mdi mdi-email')
-          | <button class="button button--itzel button--size-m button--border-thin button--text-thin"><i class="button__icon icon icon-cart mdi mdi-cart"></i><span>Express Checkout</span></button>
+          | <button class="button button--itzel button--size-m button--border-thin button--text-thin"><i class="button__icon icon icon-cart mdi mdi-currency-btc"></i><span>Pay with Bitcoin</span></button>
 
 

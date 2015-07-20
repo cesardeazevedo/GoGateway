@@ -56,16 +56,20 @@ function InvoiceController($scope, $compile, $timeout, $window, SweetAlert, Sock
             var tx = {
                 email: $scope.email
               , address: $scope.address
-              , amount: $scope.amount
+              , amount: $scope.amount / $scope.last
             };
             Socket.emit('tx:create', tx);
         });
 
         Socket.on('callback', function(data){
-            fadeIn();
-            $timeout(function(){
-                $window.location.href = '/tx/list';
-            }, 500);
+            console.log(data);
+            if(data.address === $scope.address){
+                fadeIn();
+                swal.close();
+                $timeout(function(){
+                    $window.location.href = '/tx/list';
+                }, 500);
+            }
         });
     };
 

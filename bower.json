@@ -16,7 +16,8 @@
     "angular-qr": "~0.2.0",
     "jquery": "~2.1.4",
     "angular-moment": "~0.10.1",
-    "moment": "~2.10.3"
+    "moment": "~2.10.3",
+    "angular-tooltips": "~0.1.14"
   },
   "resolutions": {
     "angular": "~1.4.3"

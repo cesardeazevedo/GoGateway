@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
+    "test": "export NODE_ENV=test; mocha test test/*.test.js",
     "postinstall": "bower install"
   },
   "dependencies": {
+    "bitcoin-math": "^0.2.0",
     "bitgo": "^0.11.24",
     "body-parser": "~1.12.0",
     "bower": "^1.4.1",
@@ -19,6 +21,7 @@
     "glob": "~5.0.3",
     "gulp": "~3.8.10",
     "gulp-concat": "^2.6.0",
+    "gulp-mocha": "^2.1.3",
     "gulp-nodemon": "~2.0.2",
     "harp": "^0.17.0",
     "jade": "~1.9.1",
@@ -35,5 +38,10 @@
   "engines": {
     "node": "0.10.x",
     "npm": "2.1.x"
+  },
+  "devDependencies": {
+    "bitcore": "^0.12.13",
+    "should": "^7.0.2",
+    "supertest": "^1.0.1"
   }
 }

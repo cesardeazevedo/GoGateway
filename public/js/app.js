@@ -3,6 +3,7 @@ angular.module('pay',
     ,'oitozero.ngSweetAlert'
     ,'ja.qr'
     ,'angularMoment'
+    ,'720kb.tooltips'
     ,'pay.tx'
     ,'pay.share.services.socket'
     ]);

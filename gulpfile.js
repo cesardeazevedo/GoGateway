@@ -2,6 +2,7 @@ var gulp        = require('gulp')
   , nodemon     = require('gulp-nodemon')
   , concat      = require('gulp-concat')
   , fixtures    = require('sequelize-fixtures')
+  , mocha       = require('gulp-mocha')
   , browserSync = require('browser-sync');
 
 gulp.task('browser-sync', ['nodemon'], function(){
@@ -34,7 +35,6 @@ gulp.task('script', function(){
     .pipe(gulp.dest('public/dest'));
 });
 
-
 gulp.task('watch', function(){
 
     //Watch jade files
@@ -48,6 +48,17 @@ gulp.task('watch', function(){
     //Watch js files
     gulp.watch('public/js/**/*.js', ['script'], function(){
         browserSync.reload('app-build.js', { stream: true });
+    });
+});
+
+gulp.task('test', function(){
+    process.env.NODE_ENV = 'test';
+    return gulp.src('test/*.test.js', { read: false })
+    .pipe(mocha({ timeout: 9000 }))
+    .once('error', function(){
+        process.exit(1);
+    }).once('end', function(){
+        process.exit();
     });
 });
 

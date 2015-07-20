@@ -1,12 +1,12 @@
 extends layout
 
 block content
-
-
+  base(href='/')
   section.list.animated.fadeInDown(ng-controller='ListTXController')
     h3
       a(href='/tx/create') Create Transaction
     h1 TX
+    h3 {{ last | currency }}
     table
       thead
         tr
@@ -20,8 +20,9 @@ block content
         tr(ng-repeat="tx in transactions")
           td {{ tx.email }}
           td.break {{ tx.address }}
-          td {{ tx.amount }}
+          td.currency
+            a(tooltips tooltip-title="{{ (tx.amount * last) | currency}}" tooltip-size="large" tooltip-side="left") Ƀ {{ tx.amount }}
           td {{ tx.tx_status.name }}
           td(am-time-ago='tx.createdAt')
           td
-            | <button class="button button--sacnite button--round-s button--inverted"><i class="button__icon icon icon-user mdi mdi-link-variant"></i><span>User</span></button>
+            | <button ng-click="pay(tx.address)" class="button button--sacnite button--round-s button--inverted"><i class="button__icon icon icon-user mdi mdi-link-variant"></i><span>User</span></button>
