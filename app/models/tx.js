@@ -16,8 +16,8 @@ module.exports = function (sequelize, DataTypes) {
           , allowNull: false
           , unique: true
       }
-      , amount: DataTypes.REAL
-      , valuePayed: DataTypes.REAL
+      , amount: DataTypes.DECIMAL(16,8)
+      , valuePaid: DataTypes.DECIMAL(16,8)
       , tx: DataTypes.TEXT
     }, {
         tableName    : 'tx'

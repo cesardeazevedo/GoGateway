@@ -6,6 +6,7 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , compress = require('compression')
   , harp = require('harp')
+  , math = require('bitcoin-math')
   , methodOverride = require('method-override');
 
 module.exports = function(app, config) {

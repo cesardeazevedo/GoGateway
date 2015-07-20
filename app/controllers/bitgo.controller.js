@@ -87,4 +87,8 @@ module.exports = {
     , removeWebhook: function(req){
 
     }
+
+    , getTransaction: function(req){
+        return bitgo.blockchain().getTransaction({ id: req.body.hash });
+    }
 };

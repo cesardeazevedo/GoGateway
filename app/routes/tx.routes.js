@@ -8,4 +8,6 @@ module.exports = function(app){
     });
 
     app.post('/tx/callback/:id', tx.callback);
+
+    app.param('id', tx.findById);
 };

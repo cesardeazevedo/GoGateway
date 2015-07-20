@@ -14,3 +14,5 @@ db.sequelize
 }).catch(function (e) {
     throw new Error(e);
 });
+
+exports = module.exports = io;
